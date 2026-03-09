@@ -5,7 +5,7 @@ export default function AboutSection() {
     <section className="py-12 bg-[#f5f7fb]">
       <div className="max-w-[1400px] mx-auto px-8">
 
-        {/* Top Heading */}
+       
         <div className="text-center max-w-[800px] mx-auto">
 
           <h1 className="text-[42px] font-extrabold text-[#0f172a]">
@@ -19,13 +19,13 @@ export default function AboutSection() {
 
         </div>
 
-        {/* Divider */}
+       
         <div className="border-t border-gray-200 mt-12"></div>
 
-        {/* Story Section */}
+        
         <div className="grid md:grid-cols-2 gap-12 mt-16 items-center">
 
-          {/* Text */}
+          
           <div>
 
             <h2 className="text-2xl font-semibold text-[#0f172a]">
@@ -53,7 +53,7 @@ export default function AboutSection() {
 
           </div>
 
-          {/* Image */}
+          
           <div className="rounded-2xl overflow-hidden shadow-lg">
 
             <Image

@@ -4,7 +4,7 @@ export default function EnterpriseSection() {
 
       <div className="max-w-[1400px] mx-auto px-8">
 
-        {/* Impact by Numbers */}
+        
         <div className="bg-white border border-gray-200 rounded-2xl px-10 py-10 grid grid-cols-5 items-center gap-8">
 
           <div>
@@ -47,7 +47,7 @@ export default function EnterpriseSection() {
 
         </div>
 
-        {/* Enterprise Heading */}
+        
         <div className="text-center mt-24">
 
           <h2 className="text-[42px] font-bold text-[#0f172a]">
@@ -60,10 +60,10 @@ export default function EnterpriseSection() {
 
         </div>
 
-        {/* Feature Cards */}
+        
         <div className="grid md:grid-cols-3 gap-10 mt-16">
 
-          {/* Card 1 */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:border-blue-500 hover:shadow-lg">
 
             <h3 className="text-xl font-semibold text-[#0f172a]">
@@ -80,7 +80,7 @@ export default function EnterpriseSection() {
 
           </div>
 
-          {/* Card 2 */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:border-blue-500 hover:shadow-lg">
 
             <h3 className="text-xl font-bold text-[#0f172a]">
@@ -97,7 +97,7 @@ export default function EnterpriseSection() {
 
           </div>
 
-          {/* Card 3 */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:border-blue-500 hover:shadow-lg">
 
             <h3 className="text-xl font-semibold text-[#0f172a]">

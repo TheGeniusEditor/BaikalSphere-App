@@ -5,7 +5,7 @@ export default function CoreValuesSection() {
     <section className="py-12 bg-[#f5f7fb]">
       <div className="max-w-[1400px] mx-auto px-8">
 
-        {/* Heading */}
+        
         <div className="text-center max-w-[700px] mx-auto">
           <h2 className="text-[38px] font-bold text-[#0f172a]">
             Our Core Values
@@ -15,10 +15,10 @@ export default function CoreValuesSection() {
           </p>
         </div>
 
-        {/* Grid */}
+        
         <div className="grid md:grid-cols-2 gap-10 mt-16">
 
-          {/* Card 1 */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition">
             <p className="text-blue-600 font-semibold mb-3">→ Radical Transparency</p>
 
@@ -36,7 +36,7 @@ export default function CoreValuesSection() {
             </ul>
           </div>
 
-          {/* Card 2 */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition">
             <p className="text-blue-600 font-semibold mb-3">→ Security First</p>
 
@@ -54,7 +54,7 @@ export default function CoreValuesSection() {
             </ul>
           </div>
 
-          {/* Card 3 */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition">
             <p className="text-blue-600 font-semibold mb-3">→ Pragmatic Innovation</p>
 
@@ -71,7 +71,7 @@ export default function CoreValuesSection() {
             </ul>
           </div>
 
-          {/* Card 4 */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition">
             <p className="text-blue-600 font-semibold mb-3">→ Customer Partnership</p>
 
@@ -90,7 +90,7 @@ export default function CoreValuesSection() {
 
         </div>
 
-        {/* Join the Mission CTA */}
+        
         <div className="mt-16 bg-white border border-gray-200 rounded-xl px-8 py-6 flex items-center justify-between flex-col md:flex-row gap-4">
           <div>
             <h3 className="font-semibold text-lg text-[#0f172a]">

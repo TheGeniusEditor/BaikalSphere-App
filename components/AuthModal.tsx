@@ -12,7 +12,7 @@ export default function AuthModal({ onClose }: any) {
 
       <div className="bg-white w-[420px] rounded-2xl shadow-xl p-8 relative">
 
-        {/* Close */}
+       
         <button
           onClick={onClose}
           className="absolute right-5 top-5 text-gray-500"
@@ -20,7 +20,7 @@ export default function AuthModal({ onClose }: any) {
           <X size={20} />
         </button>
 
-        {/* Tabs */}
+      
         <div className="flex justify-center gap-10 border-b mb-6">
 
           <button

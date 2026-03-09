@@ -4,7 +4,7 @@ export default function Logo() {
   return (
     <div className="flex items-center gap-2">
 
-      {/* Big Icon */}
+      
       <Image
         src="/logo-icon.png"
         alt="BaikalSphere"
@@ -12,7 +12,7 @@ export default function Logo() {
         height={60}
       />
 
-      {/* Text block */}
+      
       <div className="flex flex-col justify-center leading-tight">
 
         <span className="text-[28px] font-semibold text-[#0b1b33]">

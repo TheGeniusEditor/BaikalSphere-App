@@ -23,7 +23,7 @@ export default function ContactSection() {
     <section className="py-12 bg-[#f5f7fb]">
       <div className="max-w-[1400px] mx-auto px-8">
 
-        {/* Heading */}
+        
         <div className="text-center max-w-[700px] mx-auto">
           <h1 className="text-[40px] font-extrabold text-[#0f172a]">
             Get in Touch
@@ -35,10 +35,10 @@ export default function ContactSection() {
           </p>
         </div>
 
-        {/* Grid */}
+        
         <div className="grid md:grid-cols-2 gap-10 mt-16">
 
-          {/* LEFT INFO */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8">
 
             <div className="mb-8">
@@ -77,7 +77,7 @@ export default function ContactSection() {
 
           </div>
 
-          {/* RIGHT FORM */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8">
 
             <h3 className="text-xl font-semibold mb-6 text-gray-600">

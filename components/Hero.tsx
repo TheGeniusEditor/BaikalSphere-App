@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section className="relative bg-[#c9d7e4] py-36 overflow-hidden">
 
-      {/* dotted background */}
+      
       <div className="absolute inset-0 bg-[radial-gradient(#9fb3c8_1px,transparent_1px)] [background-size:22px_22px] opacity-40"></div>
 
       <div className="relative max-w-[900px] mx-auto text-center px-6">

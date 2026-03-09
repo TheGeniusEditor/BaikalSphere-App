@@ -4,7 +4,7 @@ export default function TechnicalFoundation() {
 
       <div className="max-w-[1400px] mx-auto px-8">
 
-        {/* Heading */}
+        
         <div className="text-center max-w-[700px] mx-auto">
           <h2 className="text-[40px] font-bold text-[#0f172a]">
             Technical Foundation
@@ -15,10 +15,10 @@ export default function TechnicalFoundation() {
           </p>
         </div>
 
-        {/* Features Grid */}
+        
         <div className="grid md:grid-cols-4 gap-12 mt-20">
 
-          {/* Item */}
+          
           <div>
             <div className="w-10 h-[3px] bg-blue-600 mb-6"></div>
 
@@ -32,7 +32,7 @@ export default function TechnicalFoundation() {
             </p>
           </div>
 
-          {/* Item */}
+          
           <div>
             <div className="w-10 h-[3px] bg-blue-600 mb-6"></div>
 
@@ -46,7 +46,7 @@ export default function TechnicalFoundation() {
             </p>
           </div>
 
-          {/* Item */}
+          
           <div>
             <div className="w-10 h-[3px] bg-blue-600 mb-6"></div>
 
@@ -60,7 +60,7 @@ export default function TechnicalFoundation() {
             </p>
           </div>
 
-          {/* Item */}
+          
           <div>
             <div className="w-10 h-[3px] bg-blue-600 mb-6"></div>
 

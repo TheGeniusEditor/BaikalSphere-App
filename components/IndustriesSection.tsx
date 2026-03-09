@@ -61,7 +61,7 @@ export default function IndustriesSection() {
     <section className="py-12 bg-[#f5f7fb]">
       <div className="max-w-[1500px] mx-auto px-8">
 
-        {/* Heading */}
+        
         <div className="text-center max-w-[750px] mx-auto">
           <h1 className="text-[40px] font-extrabold text-[#0f172a]">
             Specialized Solutions
@@ -73,7 +73,7 @@ export default function IndustriesSection() {
           </p>
         </div>
 
-        {/* Cards */}
+        
         <div className="grid md:grid-cols-4 gap-10 mt-16">
 
           {industries.map((industry, index) => (

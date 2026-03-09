@@ -5,7 +5,7 @@ export function Testimonial() {
 
         <div className="bg-white border border-gray-200 rounded-xl p-10 relative">
 
-          {/* Left highlight line */}
+          
           <div className="absolute left-0 top-0 h-full w-1 bg-blue-600 rounded-l-xl"></div>
 
           <p className="text-lg text-gray-800 leading-relaxed max-w-[1000px]">

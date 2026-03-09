@@ -23,18 +23,18 @@ export default function Navbar() {
     <header className="border-b bg-[#f3f4f6] sticky top-0 z-50">
       <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4">
 
-        {/* Logo */}
+        
         <Logo />
 
-        {/* Navigation */}
+        
         <nav className="flex items-center gap-10 font-medium">
 
-          {/* Home */}
+          
           <Link href="/" className={navLink("/")}>
             Home
           </Link>
 
-          {/* Products Dropdown */}
+          
           <div className="relative group">
 
             <button
@@ -47,7 +47,7 @@ export default function Navbar() {
               Products
             </button>
 
-            {/* Dropdown */}
+            
             <div className="absolute left-0 top-full pt-3 hidden group-hover:block z-50">
               <div className="w-[380px] bg-white shadow-xl rounded-xl p-6 space-y-6">
 
@@ -105,29 +105,29 @@ export default function Navbar() {
 
           </div>
 
-          {/* Platforms */}
+          
           <Link href="/platforms" className={navLink("/platforms")}>
             Platforms
           </Link>
 
-          {/* Industries */}
+          
           <Link href="/industries" className={navLink("/industries")}>
             Industries
           </Link>
 
-          {/* About */}
+          
           <Link href="/about" className={navLink("/about")}>
             About Us
           </Link>
 
-          {/* Contact */}
+          
           <Link href="/contact" className={navLink("/contact")}>
             Contact
           </Link>
 
         </nav>
 
-        {/* Sign In */}
+        
           <button
             onClick={() => setShowAuth(true)}
             className="bg-blue-600 text-white px-5 py-2 rounded-md"
@@ -135,9 +135,9 @@ export default function Navbar() {
             Sign In
           </button>
 
-      </div>
-    </header>
-     {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
-     </>
+        </div>
+        </header>
+        {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+        </>
   );
 }

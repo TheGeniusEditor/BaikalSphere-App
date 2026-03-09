@@ -4,7 +4,7 @@ export default function PlatformsSection() {
 
       <div className="max-w-[1400px] mx-auto px-8">
 
-        {/* Heading */}
+        
         <div className="text-center max-w-[800px] mx-auto">
           <h1 className="text-[44px] font-extrabold text-[#0f172a]">
             The BaikalSphere Suite
@@ -16,10 +16,10 @@ export default function PlatformsSection() {
           </p>
         </div>
 
-        {/* Cards */}
+        
         <div className="grid md:grid-cols-3 gap-10 mt-20">
 
-          {/* FinCore */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:border-blue-500 hover:shadow-lg">
 
             <p className="text-blue-600 text-xs font-semibold tracking-widest">
@@ -46,7 +46,7 @@ export default function PlatformsSection() {
 
           </div>
 
-          {/* H-Suite */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:border-blue-500 hover:shadow-lg">
 
             <p className="text-blue-600 text-xs font-semibold tracking-widest">
@@ -73,7 +73,7 @@ export default function PlatformsSection() {
 
           </div>
 
-          {/* DataSphere */}
+          
           <div className="bg-white border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:border-blue-500 hover:shadow-lg">
 
             <p className="text-blue-600 text-xs font-semibold tracking-widest">
