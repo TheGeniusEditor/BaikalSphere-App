@@ -4,11 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import AuthModal from "./AuthModal";
+import { useAuth } from "./AuthProvider";
 import { useState } from "react";
 
 export default function Navbar() {
 
   const [showAuth, setShowAuth] = useState(false);
+  const { user, logout } = useAuth();
   const pathname = usePathname();
 
   const navLink = (path: string) =>
@@ -128,12 +130,30 @@ export default function Navbar() {
         </nav>
 
         
-          <button
-            onClick={() => setShowAuth(true)}
-            className="bg-blue-600 text-white px-5 py-2 rounded-md"
-          >
-            Sign In
-          </button>
+          {user ? (
+            <div className="flex items-center gap-3">
+              <Link
+                href="/dashboard"
+                className="text-sm text-blue-600 font-medium hover:text-blue-700"
+              >
+                Dashboard
+              </Link>
+              <span className="text-sm text-gray-700 font-medium">{user.fullName}</span>
+              <button
+                onClick={() => logout()}
+                className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 text-sm"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowAuth(true)}
+              className="bg-blue-600 text-white px-5 py-2 rounded-md"
+            >
+              Sign In
+            </button>
+          )}
 
         </div>
         </header>
