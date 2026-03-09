@@ -27,7 +27,7 @@ export default function Navbar() {
         <Logo />
 
         
-        <nav className="flex items-center gap-10 font-medium">
+        <nav className="flex items-center gap-10 font-bold">
 
           
           <Link href="/" className={navLink("/")}>
