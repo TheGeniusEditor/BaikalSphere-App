@@ -38,7 +38,7 @@ export default function ArRedirectPage() {
 
     // Resolve which portal (hotel-finance or corporate-portal) this user belongs to
     const arApiUrl = process.env.NEXT_PUBLIC_AR_API_URL || "http://localhost:4000";
-    const arBaseUrl = process.env.NEXT_PUBLIC_AR_URL || "http://localhost:3002";
+    const arBaseUrl = process.env.NEXT_PUBLIC_AR_URL || "http://localhost:3001";
 
     fetch(`${arApiUrl}/api/auth/resolve-portal`, {
       headers: { Authorization: `Bearer ${token}` },
