@@ -1,9 +1,30 @@
 "use client";
 
 import { useAuth } from "@/components/AuthProvider";
-import { getAccessToken } from "@/lib/auth";
+import { getAccessToken, refreshAccessToken } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
+type BaikalsphereArTokenPayload = {
+  orgId?: string | null;
+  platformRole?: string;
+  modules?: string[];
+};
+
+const decodeTokenPayload = (token: string): BaikalsphereArTokenPayload | null => {
+  try {
+    const [, payload] = token.split(".");
+    if (!payload) {
+      return null;
+    }
+
+    const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const padded = normalized.padEnd(normalized.length + ((4 - (normalized.length % 4)) % 4), "=");
+    return JSON.parse(window.atob(padded)) as BaikalsphereArTokenPayload;
+  } catch {
+    return null;
+  }
+};
 
 /**
  * AR module redirect page.
@@ -29,29 +50,57 @@ export default function ArRedirectPage() {
       return;
     }
 
-    // Get the current access token and redirect to AR frontend with it
-    const token = getAccessToken();
-    if (!token) {
-      setError("Session expired. Please log in again.");
-      return;
-    }
+    const redirectToAr = async () => {
+      let token = getAccessToken();
+      if (!token) {
+        token = await refreshAccessToken();
+      }
 
-    // Resolve which portal (hotel-finance or corporate-portal) this user belongs to
-    const arApiUrl = process.env.NEXT_PUBLIC_AR_API_URL || "http://localhost:4000";
-    const arBaseUrl = process.env.NEXT_PUBLIC_AR_URL || "http://localhost:3001";
+      if (!token) {
+        setError("Session expired. Please log in again.");
+        return;
+      }
 
-    fetch(`${arApiUrl}/api/auth/resolve-portal`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        const portal = data.portal || "hotel-finance";
+      const tokenPayload = decodeTokenPayload(token);
+
+      const normalizeBaseUrl = (value: string) => value.replace(/\/$/, "");
+      const arBaseUrl = normalizeBaseUrl(
+        process.env.NEXT_PUBLIC_AR_URL || process.env.NEXT_PUBLIC_AR_API_URL || "https://ar.baikalsphere.com"
+      );
+      const arApiUrl = normalizeBaseUrl(
+        process.env.NEXT_PUBLIC_AR_API_URL || process.env.NEXT_PUBLIC_AR_URL || "https://ar.baikalsphere.com"
+      );
+
+      if (tokenPayload?.orgId) {
+        window.location.href = `${arBaseUrl}/corporate-portal?token=${encodeURIComponent(token)}`;
+        return;
+      }
+
+      try {
+        const response = await fetch(`${arApiUrl}/api/auth/resolve-portal`, {
+          headers: { Authorization: `Bearer ${token}` },
+          credentials: "include",
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          const message = data?.error?.message || "Failed to resolve AR portal.";
+          if (typeof message === "string" && message.toLowerCase().includes("corporate portal")) {
+            window.location.href = `${arBaseUrl}/corporate-portal?token=${encodeURIComponent(token)}`;
+            return;
+          }
+          window.location.href = `${arBaseUrl}/hotel-finance?token=${encodeURIComponent(token)}`;
+          return;
+        }
+
+        const portal = data?.portal || "hotel-finance";
         window.location.href = `${arBaseUrl}/${portal}?token=${encodeURIComponent(token)}`;
-      })
-      .catch(() => {
-        // Fallback to hotel-finance if resolve fails
+      } catch {
         window.location.href = `${arBaseUrl}/hotel-finance?token=${encodeURIComponent(token)}`;
-      });
+      }
+    };
+
+    void redirectToAr();
   }, [user, loading, router]);
 
   if (loading) {

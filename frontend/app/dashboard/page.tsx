@@ -138,12 +138,29 @@ export default function DashboardPage() {
               const isComingSoon = mod.comingSoon;
 
               return (
-                <a
+                <div
                   key={mod.id}
-                  href={isComingSoon ? undefined : mod.url}
-                  onClick={isComingSoon ? (e) => e.preventDefault() : undefined}
+                  role={isComingSoon ? undefined : "button"}
+                  tabIndex={isComingSoon ? -1 : 0}
+                  onClick={
+                    isComingSoon
+                      ? undefined
+                      : () => {
+                          router.push(mod.url)
+                        }
+                  }
+                  onKeyDown={
+                    isComingSoon
+                      ? undefined
+                      : (e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault()
+                            router.push(mod.url)
+                          }
+                        }
+                  }
                   className={`group relative overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm p-6 transition-all duration-200
-                    ${isComingSoon ? "cursor-default opacity-90" : "hover:shadow-xl hover:-translate-y-1"}`}
+                    ${isComingSoon ? "cursor-default opacity-90" : "cursor-pointer hover:shadow-xl hover:-translate-y-1"}`}
                 >
                   {/* Colour accent stripe at top */}
                   <div
@@ -187,7 +204,7 @@ export default function DashboardPage() {
                       Under development
                     </div>
                   )}
-                </a>
+                </div>
               );
             })}
           </div>

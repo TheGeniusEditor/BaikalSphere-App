@@ -1,4 +1,5 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4001";
+const ACCESS_TOKEN_KEY = "baikalsphere_access_token";
 
 interface LoginPayload {
   email: string;
@@ -39,12 +40,38 @@ interface UserProfile {
 
 let accessToken: string | null = null;
 
+function readStoredAccessToken() {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.sessionStorage.getItem(ACCESS_TOKEN_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredAccessToken(token: string | null) {
+  if (typeof window === "undefined") return;
+  try {
+    if (token) {
+      window.sessionStorage.setItem(ACCESS_TOKEN_KEY, token);
+    } else {
+      window.sessionStorage.removeItem(ACCESS_TOKEN_KEY);
+    }
+  } catch {
+    // Ignore storage errors and keep in-memory token as fallback.
+  }
+}
+
 export function getAccessToken() {
+  if (!accessToken) {
+    accessToken = readStoredAccessToken();
+  }
   return accessToken;
 }
 
 export function setAccessToken(token: string | null) {
   accessToken = token;
+  writeStoredAccessToken(token);
 }
 
 async function apiFetch(path: string, options: RequestInit = {}) {
@@ -76,7 +103,7 @@ export async function login(payload: LoginPayload): Promise<AuthResponse> {
     method: "POST",
     body: JSON.stringify(payload),
   });
-  accessToken = data.accessToken;
+  setAccessToken(data.accessToken);
   return data;
 }
 
@@ -85,17 +112,17 @@ export async function register(payload: RegisterPayload): Promise<AuthResponse> 
     method: "POST",
     body: JSON.stringify(payload),
   });
-  accessToken = data.accessToken;
+  setAccessToken(data.accessToken);
   return data;
 }
 
 export async function refreshAccessToken(): Promise<string | null> {
   try {
     const data = await apiFetch("/api/auth/refresh", { method: "POST" });
-    accessToken = data.accessToken;
+    setAccessToken(data.accessToken);
     return data.accessToken;
   } catch {
-    accessToken = null;
+    setAccessToken(null);
     return null;
   }
 }
@@ -104,7 +131,7 @@ export async function logout(): Promise<void> {
   try {
     await apiFetch("/api/auth/logout", { method: "POST" });
   } finally {
-    accessToken = null;
+    setAccessToken(null);
   }
 }
 
